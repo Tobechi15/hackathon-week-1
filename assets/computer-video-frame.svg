@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="873" height="515" fill="none" viewBox="0 0 873 515">
+  <g fill="#F5F7FB" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" clip-path="url(#a)">
+    <path stroke="#0054EC" d="M53.806 1h765.199c9.828 0 17.806 8.165 17.806 18.223v465.989H36V19.222C36 9.166 43.979 1 53.806 1Z"/>
+    <path stroke="#0054EC" d="M871.801 514.417H2l35.671-29.694H836.13l35.671 29.694Z"/>
+    <path stroke="#0054EC" d="M847.389 514.416H32.664l29.834-29.488h751.876l33.015 29.488Z"/>
+    <path stroke="#4C99F4" d="M846.05 528.17H48.166l32.8-28.174H813.25l32.8 28.174Z"/>
+    <path stroke="#4C99F4" d="M778.219 528.17H115.996l27.224-28.174h607.776l27.223 28.174Z"/>
+    <path stroke="#4C99F4" d="M703.055 528.17H191.16l21.044-28.174h469.807l21.044 28.174Z"/>
+    <path stroke="#4C99F4" d="M623.252 528.17H270.965l14.482-28.174h323.322l14.483 28.174Z"/>
+    <path stroke="#4C99F4" d="M541.592 528.17H352.625l7.768-28.174h173.431l7.768 28.174Z"/>
+    <path stroke="#4C99F4" d="M446.939 528.17h.336l-.014-28.174h-.308l-.014 28.174Z"/>
+    <path stroke="#0054EC" d="M142.43 475H86.135v9.898h56.295V475ZM793.233 475.002h-56.295v9.898h56.295v-9.898Z"/>
+  </g>
+  <defs>
+    <clipPath id="a">
+      <path fill="#fff" d="M0 0h873v515H0z"/>
+    </clipPath>
+  </defs>
+</svg>
