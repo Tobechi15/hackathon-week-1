@@ -1,0 +1,1 @@
+import mysql database to php server database before running the site 
