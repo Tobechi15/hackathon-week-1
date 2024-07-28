@@ -15,7 +15,7 @@
   session_start(); // Start the session
 
   if (isset($_SESSION['is_logged_in'])) {
-    header('Location: \hackathon-week-1\p_dashboard.php');
+    header('Location: \hackathon-week-1\p_dashboard');
   }
   ?>
       <!-- Header -->
@@ -23,7 +23,7 @@
         <div class="container mx-auto px-4 py-4 xl:px-16 flex justify-between items-center">
             <div class="text-2xl font-bold text-blue-600" style="cursor: pointer;"><a href="#home">TechTherapy</a></div>
             <div class="hidden md:flex space-x-4">
-                <a href="index.php" class="text-gray-700 hover:text-blue-600">Home</a>
+                <a href="\hackathon-week-1\" class="text-gray-700 hover:text-blue-600">Home</a>
                 <a href="p_dashboard" class="text-gray-700 hover:text-blue-600">Dashboard</a>
                 <!-- <a href="#features" class="text-gray-700 hover:text-blue-600">Features</a> -->
                 <a href="#about" class="text-gray-700 hover:text-blue-600">About Us</a>
@@ -34,7 +34,7 @@
         <?php if (isset($_SESSION['is_logged_in'])) : ?>
                 <a href="script/logout.php" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Sign Out</a>
         <?php else : ?>
-            <a href="signup.php" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Get Started</a>  
+            <a href="signup" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Get Started</a>  
         <?php endif; ?>
             <div class="md:hidden">
                 <button id="menu-btn" class="text-gray-700 hover:text-blue-600 focus:outline-none">
@@ -59,7 +59,7 @@
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
         <input class="w-full mt-2 bg-blue-600 text-white px-6 py-2 rounded inline-block" type="submit" onclick="navigateTo()" name="signup" value="Signup">
-        <p>Already have an account? <a href="login.php">Login</a></p>
+        <p>Already have an account? <a href="login">Login</a></p>
       </form>
     </div>
   </div>

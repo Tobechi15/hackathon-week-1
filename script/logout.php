@@ -4,5 +4,5 @@ unset($_SESSION['is_logged_in']);
 unset($_SESSION['user_data']);
 session_destroy();
 // Redirect
-header('Location: \hackathon-week-1\index.php');
+header('Location: \hackathon-week-1\');
 ?>

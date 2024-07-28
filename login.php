@@ -15,7 +15,7 @@
   session_start(); // Start the session
 
   if (isset($_SESSION['is_logged_in'])) {
-    header('Location: \hackathon-week-1\p_dashboard.php');
+    header('Location: \hackathon-week-1\p_dashboard');
   }
   ?>
       <!-- Header -->
@@ -23,7 +23,7 @@
         <div class="container mx-auto px-4 py-4 xl:px-16 flex justify-between items-center">
             <div class="text-2xl font-bold text-blue-600" style="cursor: pointer;"><a href="#home">Menta</a></div>
             <div class="hidden md:flex space-x-4">
-                <a href="index.php" class="text-gray-700 hover:text-blue-600">Home</a>
+                <a href="\hackathon-week-1\" class="text-gray-700 hover:text-blue-600">Home</a>
                 <a href="#features" class="text-gray-700 hover:text-blue-600">Features</a>
                 <a href="#about" class="text-gray-700 hover:text-blue-600">About</a>
                 <a href="#testimonials" class="text-gray-700 hover:text-blue-600">Testimonials</a>
@@ -32,7 +32,7 @@
             <?php if (isset($_SESSION['is_logged_in'])) : ?>
                 <a href="script/logout.php" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Sign Out</a>
         <?php else : ?>
-            <a href="signup.php" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Get Started</a>  
+            <a href="signup" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Get Started</a>  
         <?php endif; ?>
             <div class="md:hidden">
                 <button id="menu-btn" class="text-gray-700 hover:text-blue-600 focus:outline-none">
@@ -41,12 +41,12 @@
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden p">
-            <a href="index.php" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">Home</a>
+            <a href="\hackathon-week-1\" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">Home</a>
             <a href="#features" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">Features</a>
             <a href="#about" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">About</a>
             <a href="#testimonials" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">Testimonials</a>
             <a href="#contact" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">Contact</a>
-            <a href="signup.php" class="mx-4 hover:bg-gray-200 bg-blue-600 text-white px-4 py-2 rounded">Get Started</a>
+            <a href="signup" class="mx-4 hover:bg-gray-200 bg-blue-600 text-white px-4 py-2 rounded">Get Started</a>
         </div>
     </header>
 
