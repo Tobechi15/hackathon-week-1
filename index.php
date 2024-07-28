@@ -79,20 +79,28 @@
         }
     </style>
 </head>
-
+<?php
+session_start(); // Start the session
+?>
 <body class="font-sans bg-white">
     <!-- Header -->
     <header class="fixed z-30 w-full bg-white/80 backdrop-blur-sm transition-all duration-300 dark:bg-gray-black">
         <div class="container mx-auto px-4 py-4 xl:px-16 flex justify-between items-center">
             <div class="text-2xl font-bold text-blue-600" style="cursor: pointer;"><a href="#home">TechTherapy</a></div>
             <div class="hidden md:flex space-x-4">
-                <a href="#home" class="text-gray-700 hover:text-blue-600">Home</a>
+                <a href="index.php" class="text-gray-700 hover:text-blue-600">Home</a>
+                <a href="p_dashboard" class="text-gray-700 hover:text-blue-600">Dashboard</a>
                 <!-- <a href="#features" class="text-gray-700 hover:text-blue-600">Features</a> -->
                 <a href="#about" class="text-gray-700 hover:text-blue-600">About Us</a>
                 <a href="#reviews" class="text-gray-700 hover:text-blue-600">Reviews</a>
                 <a href="#contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+                
             </div>
-            <a href="signup.html" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Sign up / Log in</a>
+        <?php if (isset($_SESSION['is_logged_in'])) : ?>
+                <a href="script/logout.php" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Sign Out</a>
+        <?php else : ?>
+            <a href="signup.php" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Get Started</a>  
+        <?php endif; ?>
             <div class="md:hidden">
                 <button id="menu-btn" class="text-gray-700 hover:text-blue-600 focus:outline-none">
                     <span class="material-symbols-outlined">menu</span>
