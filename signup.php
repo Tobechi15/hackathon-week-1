@@ -65,7 +65,7 @@
   </div>
   <script>
     function navigateTo() {
-      window.location.href = 'login.html';
+      window.location.href = 'login.php';
     }
   </script>
 </body>
