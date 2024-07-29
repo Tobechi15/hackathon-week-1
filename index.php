@@ -88,8 +88,10 @@ session_start(); // Start the session
         <div class="container mx-auto px-4 py-4 xl:px-16 flex justify-between items-center">
             <div class="text-2xl font-bold text-blue-600" style="cursor: pointer;"><a href="#home">TechTherapy</a></div>
             <div class="hidden md:flex space-x-4">
-                <a href="#home" class="text-gray-700 hover:text-blue-600">Home</a>
-                <a href="#_dashboard" class="text-gray-700 hover:text-blue-600">Dashboard</a>
+                <a href="index" class="text-gray-700 hover:text-blue-600">Home</a>
+                <?php if (isset($_SESSION['is_logged_in'])) : ?>
+                    <a href="p_dashboard" class="text-gray-700 hover:text-blue-600">Dashboard</a>
+                <?php endif; ?>
                 <!-- <a href="#features" class="text-gray-700 hover:text-blue-600">Features</a> -->
                 <a href="#about" class="text-gray-700 hover:text-blue-600">About Us</a>
                 <a href="#reviews" class="text-gray-700 hover:text-blue-600">Reviews</a>
