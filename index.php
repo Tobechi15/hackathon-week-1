@@ -367,7 +367,7 @@ session_start(); // Start the session
                 <div class="space-x-4">
                     <!-- <a href="#" class="hover:text-white">Privacy Policy</a> -->
                     <!-- <a href="#" class="hover:text-white">Terms of Service</a> -->
-                    <a href="#contact" class="hover:text-white"><u>Have a question, reach out</u></a>
+                    <!-- <a href="#contact" class="hover:text-white"><u>Have a question, reach out</u></a> -->
                 </div>
             </div>
             <div class="mt-4 text-center">
