@@ -88,8 +88,8 @@ session_start(); // Start the session
         <div class="container mx-auto px-4 py-4 xl:px-16 flex justify-between items-center">
             <div class="text-2xl font-bold text-blue-600" style="cursor: pointer;"><a href="#home">TechTherapy</a></div>
             <div class="hidden md:flex space-x-4">
-                <a href="\hackathon-week-1\" class="text-gray-700 hover:text-blue-600">Home</a>
-                <a href="p_dashboard" class="text-gray-700 hover:text-blue-600">Dashboard</a>
+                <a href="#home" class="text-gray-700 hover:text-blue-600">Home</a>
+                <a href="#_dashboard" class="text-gray-700 hover:text-blue-600">Dashboard</a>
                 <!-- <a href="#features" class="text-gray-700 hover:text-blue-600">Features</a> -->
                 <a href="#about" class="text-gray-700 hover:text-blue-600">About Us</a>
                 <a href="#reviews" class="text-gray-700 hover:text-blue-600">Reviews</a>
@@ -99,7 +99,7 @@ session_start(); // Start the session
         <?php if (isset($_SESSION['is_logged_in'])) : ?>
                 <a href="script/logout" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Sign Out</a>
         <?php else : ?>
-            <a href="signup" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Get Started</a>  
+            <a href="signup.php" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Get Started</a>  
         <?php endif; ?>
             <div class="md:hidden">
                 <button id="menu-btn" class="text-gray-700 hover:text-blue-600 focus:outline-none">
@@ -174,7 +174,7 @@ session_start(); // Start the session
                 platform to help connect people with therapists and vice versa. An often concern is cost (for both the therapist and patient), as a result
                 we've tried to minimize it as much as possible, since the services provided are fully online, therapists don't need to pay for office space
                 and patients can also save the cost of commuting. We are aware that the problem isn't entirely solved, nontheless we are always working to provide
-                you with the best, so please bear with us. Have a suggestion? <a href="reach_out.html"><u>Reach out, we'd love to hear it!</u></a>
+                you with the best, so please bear with us. Have a suggestion? <a href="#contact"><u>Reach out, we'd love to hear it!</u></a>
           </p>
         </div>
       </section>
@@ -310,6 +310,33 @@ session_start(); // Start the session
         </div>
     </section>
 
+    <section class="bg-white text-black py-10 text-left relative flex items-center justify-center" style="height: 100vh;" id="contact">
+    <div class="text-center w-full max-w-lg px-4 xl:px-16">
+        <h2 class="text-3xl font-bold text-black mb-8">Contact Us</h2>
+        <form class="space-y-4" name="submit-to-google-sheet">
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" id="name" name="Name" class="mt-1 p-2 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" required>
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="email" name="Email" class="mt-1 p-2 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" required>
+            </div>
+            <div>
+                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                <textarea id="message" name="Message" rows="4" class="mt-1 p-2 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md" required></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Submit</button>
+            </div>
+        </form>
+        <span id="msg" style="color: blue; margin-top: 10px; display: block;"></span>
+    </div>
+</section>
+
+
+
+
     <!-- <section class="bg-white text-black py-10 text-left relative" style="height: 100vh;">
         <div class="container mx-auto px-4 xl:px-16">
             <div class="gap-x-16 md:flex md:items-center md:justify-between">
@@ -328,8 +355,8 @@ session_start(); // Start the session
     </section> -->
 
     <!-- Footer -->
-    <footer id="contact" class="bg-gray-800 text-gray-300 py-8">
-        <div class="container mx-auto px-4">
+    <footer class="bg-gray-800 text-gray-300 py-8">
+        <div class="container mx-auto px-4 xl:px-16">
             <div class="flex justify-between items-center">
                 <div>
                     <h3 class="text-lg font-bold">TechTherapy Startup</h3>
@@ -338,7 +365,7 @@ session_start(); // Start the session
                 <div class="space-x-4">
                     <!-- <a href="#" class="hover:text-white">Privacy Policy</a> -->
                     <!-- <a href="#" class="hover:text-white">Terms of Service</a> -->
-                    <a href="reach_out.html" class="hover:text-white"><u>Have a question, reach out</u></a>
+                    <a href="#contact" class="hover:text-white"><u>Have a question, reach out</u></a>
                 </div>
             </div>
             <div class="mt-4 text-center">
@@ -402,6 +429,23 @@ session_start(); // Start the session
         showCarouselItem(currentIndex);
 
         let autoScrollInterval = setInterval(autoScroll, 3000);
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzP1Szsstg86nJb0KLB3fb4t8mjz3XbMX0A1ek9fsVfzd2wuhDjabGPM-64nw_vKPY/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message sent successfully"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+                }, 5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
 
 
     </script>
