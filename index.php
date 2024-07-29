@@ -334,7 +334,7 @@ session_start(); // Start the session
         </form>
         <span id="msg" style="color: blue; margin-top: 10px; display: block;"></span>
     </div>
-</section>
+    </section>
 
 
 
