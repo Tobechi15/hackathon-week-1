@@ -356,10 +356,11 @@ session_start(); // Start the session
         </div>
     </section> -->
 
+    <!-- line 363 was first : class="flex justify-between items-center" -->
     <!-- Footer -->
     <footer class="bg-gray-800 text-gray-300 py-8">
         <div class="container mx-auto px-4 xl:px-16">
-            <div class="flex justify-between items-center">
+            <div class="mt-4 text-center"> 
                 <div>
                     <h3 class="text-lg font-bold">TechTherapy Startup</h3>
                     <p class="mt-2">Innovative solutions for your mental health.</p>
