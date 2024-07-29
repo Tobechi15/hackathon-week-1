@@ -101,7 +101,7 @@ session_start(); // Start the session
         <?php if (isset($_SESSION['is_logged_in'])) : ?>
                 <a href="script/logout" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Sign Out</a>
         <?php else : ?>
-            <a href="signup.php" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Get Started</a>  
+            <a href="signup.php" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Sign Up / Log in</a>  
         <?php endif; ?>
             <div class="md:hidden">
                 <button id="menu-btn" class="text-gray-700 hover:text-blue-600 focus:outline-none">
