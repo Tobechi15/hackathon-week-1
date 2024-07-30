@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2024 at 09:42 PM
+-- Generation Time: Jul 30, 2024 at 03:09 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,6 +20,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `therapy`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointment`
+--
+
+CREATE TABLE `appointment` (
+  `id` int(11) NOT NULL,
+  `patient` varchar(255) NOT NULL,
+  `datee` date NOT NULL,
+  `timee` time NOT NULL,
+  `create_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `done` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `appointment`
+--
+
+INSERT INTO `appointment` (`id`, `patient`, `datee`, `timee`, `create_date`, `done`) VALUES
+(2, 'john doe', '2024-07-31', '08:18:16', '2024-07-30 00:18:45', 1),
+(11, 'tobi', '2024-07-31', '02:40:00', '2024-07-30 02:37:29', 1),
+(12, 'tyre', '2024-07-31', '02:42:00', '2024-07-30 02:37:53', 1);
 
 -- --------------------------------------------------------
 
@@ -48,6 +72,12 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `create_date`) VALUES
 --
 
 --
+-- Indexes for table `appointment`
+--
+ALTER TABLE `appointment`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -56,6 +86,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `appointment`
+--
+ALTER TABLE `appointment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user`
