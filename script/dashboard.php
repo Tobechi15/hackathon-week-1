@@ -72,10 +72,11 @@ if (isset($_POST['add'])) {
         'title' => $title,
         'date' => $date,
         'time' => $time,
+        'timezone' => $timezone,
         'agenda' => $agenda,
         'meeting_id' => $meetingData['id'],
-        'Join_URL: ' => $meetingData['join_url'],
-        'start_URL: ' => $meetingData['start_url'],
+        'Join_URL' => $meetingData['join_url'],
+        'start_URL' => $meetingData['start_url'],
         'done' => 0,
         'create_date' => $C_date,
 

@@ -62,7 +62,7 @@ if (isset($_POST['login'])) {
             "email"	=> $response['email']
         );
         echo 'User signed in successfully';
-        header('Location: \hackathon-week-1\p_dashboard');
+        header('Location: \hackathon-week-1\client');
     }
 }
 ?>

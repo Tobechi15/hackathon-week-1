@@ -90,7 +90,7 @@ session_start(); // Start the session
             <div class="hidden md:flex space-x-4">
                 <a href="index" class="text-gray-700 hover:text-blue-600">Home</a>
                 <?php if (isset($_SESSION['is_logged_in'])) : ?>
-                    <a href="p_dashboard" class="text-gray-700 hover:text-blue-600">Dashboard</a>
+                    <a href="client" class="text-gray-700 hover:text-blue-600">Dashboard</a>
                 <?php endif; ?>
                 <!-- <a href="#features" class="text-gray-700 hover:text-blue-600">Features</a> -->
                 <a href="#about" class="text-gray-700 hover:text-blue-600">About Us</a>
