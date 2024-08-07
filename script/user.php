@@ -1,65 +1,68 @@
 <?php
-session_start();
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "therapy";
+include 'demo.php';
+include 'config.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// User Registration
 if (isset($_POST['signup'])) {
-    $username = $_POST['username'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $password = $_POST['password'];
+    $username = $_POST['username'];
 
-    $sql = "INSERT INTO user (username, email, password) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $username, $email, $password);
+    $data = [
+        'email' => $email,
+        'password' => $password,
+        'returnSecureToken' => true
+    ];
 
-    if ($stmt->execute()) {
-        header('Location: \hackathon-week-1\login.php');
+    $url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' . FIREBASE_API_KEY;
+    $response = firebaseRequest($url, $data, 'POST');
+
+    if (isset($response['error'])) {
+        echo 'Error: ' . $response['error']['message'];
     } else {
-        echo "Error: " . $stmt->error;
+        $uid = $response['localId'];
+        $userData = [
+            'username' => $username,
+            'email' => $email
+        ];
+        writeToFirebase('users/' . $uid, $userData);
+        
+        session_start();
+        $_SESSION['uid'] = $uid;
+        $_SESSION['username'] = $username;
+
+        echo 'User created successfully with username';
+        header('Location: \hackathon-week-1\login');
     }
-    
-    $stmt->close();
 }
 
-// User Login
+
 if (isset($_POST['login'])) {
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $sql = "SELECT id, username, email, password FROM user WHERE username = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($user_id, $user_username, $user_email, $hashed_password);
-    $stmt->fetch();
+    $data = [
+        'email' => $email,
+        'password' => $password,
+        'returnSecureToken' => true
+    ];
 
-    if ($stmt->num_rows > 0 && password_verify($password, $hashed_password)) {
-        // Store user data in session
-        // $_SESSION['user_id'] = $user_id;
-        // $_SESSION['username'] = $user_username;
-        // $_SESSION['email'] = $user_email;
+    $url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' . FIREBASE_API_KEY;
+    $response = firebaseRequest($url, $data, 'POST');
+
+    if (isset($response['error'])) {
+        echo 'Error: ' . $response['error']['message'];
+    } else {
+        session_start();
+        $uid = $response['localId'];
+        $userData = readFromFirebase('users/' . $uid);
         $_SESSION['is_logged_in'] = true;
         $_SESSION['user_data'] = array(
-            "id"	=> $user_id,
-            "pame"	=> $user_username,
-            "email"	=> $user_email
+            "id"	=> $response['localId'],
+            "pame"	=> $userData['username'],
+            "email"	=> $response['email']
         );
+        echo 'User signed in successfully';
         header('Location: \hackathon-week-1\p_dashboard');
-    } else {
-        echo "Invalid username or password.";
     }
-    $stmt->close();
 }
-$conn->close();
 ?>

@@ -54,13 +54,13 @@
     <div class="form-container">
       <form class="form login-form" method="post" action="script\user.php">
         <h2>Login</h2>
-        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Password" required>
 
         <input class="w-full mt-2 bg-blue-600 text-white px-6 py-2 rounded inline-block" type="submit" name="login" value="Login">
         <br><br>
         <a href="#">Forgot password?</a>
-        <p>Don't have an account? <a href="signup.php">Signup</a></p>
+        <p>Don't have an account? <a href="signup">Signup</a></p>
       </form>
     </div>
   </div>

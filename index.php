@@ -101,7 +101,7 @@ session_start(); // Start the session
         <?php if (isset($_SESSION['is_logged_in'])) : ?>
                 <a href="script/logout" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Sign Out</a>
         <?php else : ?>
-            <a href="signup.php" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Get Started</a>  
+            <a href="signup" class="hidden md:block bg-blue-600 text-white px-4 py-2 rounded">Get Started</a>  
         <?php endif; ?>
             <div class="md:hidden">
                 <button id="menu-btn" class="text-gray-700 hover:text-blue-600 focus:outline-none">
@@ -452,6 +452,29 @@ session_start(); // Start the session
 
 
     </script>
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAcwVOZ1Khwak8nmr8A4ZRGqTbCtf-FIC8",
+    authDomain: "therapy-719a7.firebaseapp.com",
+    projectId: "therapy-719a7",
+    storageBucket: "therapy-719a7.appspot.com",
+    messagingSenderId: "1001194092414",
+    appId: "1:1001194092414:web:2bd6d6dfa507246976252f",
+    measurementId: "G-8MSGH5VXJ8"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </body>
 
 </html>
