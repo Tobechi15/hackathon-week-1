@@ -161,6 +161,7 @@ require 'script\dash.php';
                   <th class="py-2 px-4 border-b">Patient Name</th>
                   <th class="py-2 px-4 border-b">Date</th>
                   <th class="py-2 px-4 border-b">Time</th>
+                  <th class="py-2 px-4 border-b">zoom link</th>
                   <th class="py-2 px-4 border-b">Action</th>
                 </tr>
               </thead>
@@ -177,6 +178,9 @@ require 'script\dash.php';
                   </td>
                   <td class="py-2 px-4 border-b">
                     <?php echo $appointment['time'] ?>
+                  </td>
+                  <td class="py-2 px-4 border-b">
+                    <a class="w-50 bg-blue-600 text-white py-2 px-2 rounded" href="<?php echo $appointment['start_URL'] ?>">start zoom</a>
                   </td>
                   <td class="py-2 px-4 border-b">
                     <form method="post" action="script/dashboard.php">
