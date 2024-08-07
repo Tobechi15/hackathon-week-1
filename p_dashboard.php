@@ -83,7 +83,7 @@ if (!isset($_SESSION['is_logged_in'])) {
           uasort($appointments, 'sortByDateDesc');
         }
       ?>
-      
+
       <div class="flex-1 pt-16 px-8 h-screen overflow-y-scroll">
         <div class="grid grid-cols-6 pt-4 my-4">
           <button id="addAppointmentButton" class=" w-40 bg-blue-600 text-white py-2 px-4 rounded">Add
@@ -134,7 +134,7 @@ if (!isset($_SESSION['is_logged_in'])) {
           <div class="bg-white p-4 rounded shadow-md">
             <p class="text-gray-500">Scheduled appointment</p>
             <p id="patientCount" class="text-2xl font-semibold">
-            <?php echo $completedCount; ?>
+              <?php echo $completedCount; ?>
             </p>
           </div>
           <div class="bg-white p-4 rounded shadow-md">
@@ -167,7 +167,7 @@ require 'script\dash.php';
               <tbody id="appointmentsTableBody">
                 <!-- Appointments will be dynamically added here -->
                 <?php foreach($appointments as $id => $appointment) : ?>
-                  <?php if (isset($appointment['done']) && $appointment['done'] === 0): ?>
+                <?php if (isset($appointment['done']) && $appointment['done'] === 0): ?>
                 <tr>
                   <td class="py-2 px-4 border-b">
                     <?php echo $appointment['title'] ?>
@@ -214,7 +214,7 @@ require 'script\dash.php';
             <tbody id="appointmentsTableBody">
               <!-- Appointments will be dynamically added here -->
               <?php foreach($appointments as $id => $appointment) : ?>
-                <?php if (isset($appointment['done']) && $appointment['done'] === 1): ?>
+              <?php if (isset($appointment['done']) && $appointment['done'] === 1): ?>
               <tr>
                 <td class="py-2 px-4 border-b">
                   <?php echo $appointment['title'] ?>
@@ -241,32 +241,27 @@ require 'script\dash.php';
         <div class="flex-1 pt-16 px-8 h-screen overflow-y-scroll">
           <p>No appointments found.</p>
         </div>
-      <?php endif; ?>
+        <?php endif; ?>
       </div>
     </div>
   </main>
   <!-- Add Appointment Modal -->
-  <div id="addAppointmentModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 z-50 flex justify-center items-center hidden">
+  <div id="addAppointmentModal"
+    class="fixed inset-0 bg-gray-600 bg-opacity-50 z-50 flex justify-center items-center hidden">
     <div class="bg-white p-8 rounded shadow-lg max-w-md w-full">
       <h2 class="text-xl font-bold mb-4">Add Appointment</h2>
       <form id="addAppointmentForm" method="post" action="script/dashboard.php">
         <div class="mb-4">
-          <?php
-
-          $database = new Database;
-          $database->query("SELECT * FROM `user`");
-          $rows = $database->resultset();
-          ?>
           <label for="patientName" class="block text-sm font-medium text-gray-700">Patient Name</label>
           <select id="cars" name="patientName" class="mt-1 block p-2 w-full border-gray-300 rounded-md shadow-sm">
-            <?php foreach($rows as $row) : ?>
-            <option value="<?php echo $row['username'] ?>">
-              <?php echo $row['username'] ?>
+            <?php foreach($users as $user) : ?>
+            <option value="<?php echo $user['username'] ?>">
+              <?php echo $user['username'] ?>
             </option>
             <?php endforeach; ?>
           </select>
         </div>
-        
+
         <div class="mb-4">
           <label for="appointmentDate" class="block text-sm font-medium text-gray-700">Start Time (ISO 8601):</label>
           <input type="datetime-local" id="appointmentDate" name="appointmentDate"
@@ -291,8 +286,8 @@ require 'script\dash.php';
           <input type="hidden" id="timestamp" name="create_date">
           <button type="button" id="closeModalButton"
             class="bg-gray-500 text-white py-2 px-4 rounded mr-2">Cancel</button>
-          <input type="submit" onclick="setCurrentTimestamp()" class="bg-blue-600 text-white py-2 px-4 rounded" style="background-color: #2563eb;"
-            name="add" value="Add">
+          <input type="submit" onclick="setCurrentTimestamp()" class="bg-blue-600 text-white py-2 px-4 rounded"
+            style="background-color: #2563eb;" name="add" value="Add">
         </div>
       </form>
     </div>
@@ -302,18 +297,18 @@ require 'script\dash.php';
 <script src="script/app.js"></script>
 
 <script>
-        function setCurrentTimestamp() {
-            const hiddenInput = document.getElementById('timestamp');
-            const currentDate = new Date();
-            const timezoneOffsetInHours = currentDate.getTimezoneOffset() / 60;
-            currentDate.setHours(currentDate.getHours() - timezoneOffsetInHours);
-            const currentTimestamp = currentDate.toISOString();
-            hiddenInput.value = currentTimestamp;
-        }
+  function setCurrentTimestamp() {
+    const hiddenInput = document.getElementById('timestamp');
+    const currentDate = new Date();
+    const timezoneOffsetInHours = currentDate.getTimezoneOffset() / 60;
+    currentDate.setHours(currentDate.getHours() - timezoneOffsetInHours);
+    const currentTimestamp = currentDate.toISOString();
+    hiddenInput.value = currentTimestamp;
+  }
 
-        // Ensure the function runs after the page is fully loaded
-        setCurrentTimestamp();
-    </script>
+  // Ensure the function runs after the page is fully loaded
+  setCurrentTimestamp();
+</script>
 <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
